@@ -1,0 +1,49 @@
+//hesap makinesi
+//değişkenler (net -> immutabble{değiştirilemez}, var -> mutable)
+//operatorler
+//assync metodu
+// if condition
+
+// canister => akıllı sözleşme
+
+actor hesap_makinesi{
+  var hucre: Int = 0;
+
+  //Toplama işlemi
+
+  //fonksiyon
+  public func toplama (s: Int) : async Int{
+    hucre += s;
+    hucre
+    // (Debug.print(debug_show (hucre));)
+  };
+
+//cikarma islemi
+  public func cikarma(s: Int) : async Int{
+    hucre -= s;
+    hucre
+  };
+
+  //carpma islemi
+  public func carpma (s: Int) : async Int{
+    hucre*=s;
+    hucre
+  };
+
+  //bolme islemi
+  // soru isareti koyduk cunku sonuc 0 gelebilir float gelebilir.
+  public func bolme (s: Int) : async ?Int{
+    if(s==0){
+      null
+    }else{
+      hucre /= s;
+      ?hucre //sonucu bilmiyoruz diye soru isareti koyduk.
+    };
+  };
+
+  //temizle
+  public func temizle() : async() {
+    hucre := 0;
+  }
+
+};
